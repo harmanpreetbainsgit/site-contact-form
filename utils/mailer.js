@@ -8,14 +8,14 @@ module.exports = async function sendMail(data) {
   return resend.emails.send({
     from: "Contact Form <noreply@codezapsolutions.com>", // change later to your verified domain
     to: process.env.MAIL_TO,
-    subject: `New Contact Message from ${name}`,
+    subject: `New message from your website`,
     html: `
-      <h3>New Contact Request</h3>
+      <p>Hi Harmanpreet, <br/>You received a new message:</p>
       <p><b>Name:</b> ${name}</p>
       <p><b>Email:</b> ${email}</p>
       <p><b>Phone:</b> ${phone}</p>
       <p><b>Location:</b> ${location}</p>
-      <p><b>Message:</b><br/>${message}</p>
+      <p><b>Message:</b>${message}</p>
     `,
   });
 };
