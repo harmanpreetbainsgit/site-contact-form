@@ -1,5 +1,10 @@
 const nodemailer = require("nodemailer");
 
+console.log('check if env is correct----------START');
+console.log(process.env.SMTP_HOST);
+console.log(process.env.SMTP_PORT);
+console.log('check if env is correct----------END');
+
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
   port: Number(process.env.SMTP_PORT),
