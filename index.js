@@ -8,11 +8,10 @@ const app = express();
 
 app.use(
     cors({
-        origin: [
-            "http://localhost:5173",
-            "https://site-contact-form.onrender.com"
-        ],
-    }),
+        origin: ["http://localhost:5173","https://codezapsolutions.com"],
+        methods: ["GET", "POST"],
+        allowedHeaders: ["Content-Type", "Authorization"],
+    })
 );
 
 app.use(express.json());
