@@ -6,7 +6,7 @@ module.exports = async function sendMail(data) {
   const { name, email, phone, location, message } = data;
 
   return resend.emails.send({
-    from: "Contact Form <noreply@codezapsolutions.com>", // change later to your verified domain
+    from: "Codezapsolutions <noreply@codezapsolutions.com>", // change later to your verified domain
     to: process.env.MAIL_TO,
     subject: `New message from your website`,
     html: `
