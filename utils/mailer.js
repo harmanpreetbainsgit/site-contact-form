@@ -1,34 +1,13 @@
-const dns = require("dns");
-dns.setDefaultResultOrder("ipv4first");
+const { Resend } = require("resend");
 
-const nodemailer = require("nodemailer");
-
-const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST,
-  port: Number(process.env.SMTP_PORT),
-  secure: Number(process.env.SMTP_PORT) === 465,
-  auth: {
-    user: process.env.SMTP_USER,
-    pass: process.env.SMTP_PASS,
-  },
-});
-
-// Verify connection on startup (VERY IMPORTANT FOR RENDER)
-transporter.verify(function (error, success) {
-  if (error) {
-    console.error("❌ SMTP Connection Error:", error);
-  } else {
-    console.log("✅ SMTP Server Ready");
-  }
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 module.exports = async function sendMail(data) {
   const { name, email, phone, location, message } = data;
 
-  return transporter.sendMail({
-    from: `"Contact Form" <${process.env.SMTP_USER}>`,
+  return resend.emails.send({
+    from: "Contact Form <codezapsolutions@gmail.com>", // change later to your verified domain
     to: process.env.MAIL_TO,
-    replyTo: email,
     subject: `New Contact Message from ${name}`,
     html: `
       <h3>New Contact Request</h3>

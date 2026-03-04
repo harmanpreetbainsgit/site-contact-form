@@ -1,4 +1,5 @@
 require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 
@@ -6,12 +7,6 @@ const contactRoutes = require("./routes/contact");
 
 const app = express();
 
-/*
-  CORS CONFIG
-  - Allows localhost (dev)
-  - Allows your live domain
-  - Prevents CORS confusion during 502
-*/
 const allowedOrigins = [
   "http://localhost:5173",
   "https://codezapsolutions.com"
@@ -27,7 +22,7 @@ app.use(
       }
     },
     methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type"],
   })
 );
 
@@ -40,6 +35,7 @@ app.get("/", (_, res) => {
 });
 
 const PORT = process.env.PORT || 3000;
+
 app.listen(PORT, () => {
   console.log(`✅ Server running on port ${PORT}`);
 });
