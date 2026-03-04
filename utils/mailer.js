@@ -10,6 +10,15 @@ const transporter = nodemailer.createTransport({
   },
 });
 
+// Verify connection on startup (VERY IMPORTANT FOR RENDER)
+transporter.verify(function (error, success) {
+  if (error) {
+    console.error("❌ SMTP Connection Error:", error);
+  } else {
+    console.log("✅ SMTP Server Ready");
+  }
+});
+
 module.exports = async function sendMail(data) {
   const { name, email, phone, location, message } = data;
 
