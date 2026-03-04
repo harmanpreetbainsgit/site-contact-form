@@ -10,8 +10,7 @@ app.use(
     cors({
         origin: [
             "http://localhost:5173",
-            "https://your-vue-site.onrender.com",
-            "https://yourdomain.com",
+            "https://site-contact-form.onrender.com"
         ],
     }),
 );
