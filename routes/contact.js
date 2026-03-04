@@ -38,7 +38,7 @@ router.post(
 
       return res.status(500).json({
         success: false,
-        message: "Failed to send email",
+        message: "Failed to send email" + err,
       });
     }
   }
