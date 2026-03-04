@@ -1,9 +1,7 @@
-const nodemailer = require("nodemailer");
+const dns = require("dns");
+dns.setDefaultResultOrder("ipv4first");
 
-console.log('check if env is correct----------START');
-console.log(process.env.SMTP_HOST);
-console.log(process.env.SMTP_PORT);
-console.log('check if env is correct----------END');
+const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
