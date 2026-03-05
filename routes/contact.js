@@ -34,7 +34,7 @@ router.post(
       });
 
     } catch (err) {
-      console.error("🔥 MAIL ERROR:", err);
+      console.error("MAIL ERROR:", err);
 
       return res.status(500).json({
         success: false,
